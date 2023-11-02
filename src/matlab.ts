@@ -50,7 +50,7 @@ export async function generateScript(workspaceDir: string, command: string): Pro
  * @param architecture Architecture of the runner (e.g., "x64")
  * @param fn ExecFn that will execute a command on the runner
  */
-export async function runCommand(hs: HelperScript, platform: string, architecture: string, fn: ExecFn, args?: string[]): Promise<void> {
+export async function runCommand(hs: HelperScript, platform: string, architecture: string, fn: ExecFn, args?: string): Promise<void> {
     const rmcPath = getRunMATLABCommandScriptPath(platform, architecture);
     await fs.chmod(rmcPath, 0o777);
 
@@ -58,9 +58,9 @@ export async function runCommand(hs: HelperScript, platform: string, architectur
 
     let execArgs = [rmcArg];
 
-    // if (args) {
-    //    execArgs = execArgs.concat(args);
-    // }
+    if (args) {
+       execArgs = execArgs.concat(args.split(" "));
+    }
 
     const exitCode = await fn(rmcPath, execArgs);
     // const exitCode = await fn(rmcPath, execArgs);

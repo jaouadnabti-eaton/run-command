@@ -28,7 +28,7 @@ export declare function generateScript(workspaceDir: string, command: string): P
  * @param architecture Architecture of the runner (e.g., "x64")
  * @param fn ExecFn that will execute a command on the runner
  */
-export declare function runCommand(hs: HelperScript, platform: string, architecture: string, fn: ExecFn, args?: string[]): Promise<void>;
+export declare function runCommand(hs: HelperScript, platform: string, architecture: string, fn: ExecFn, args?: string): Promise<void>;
 /**
  * Get the path of the script containing RunMATLABCommand for the host OS.
  *
