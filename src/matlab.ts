@@ -56,13 +56,13 @@ export async function runCommand(hs: HelperScript, platform: string, architectur
 
     const rmcArg = script.cdAndCall(hs.dir, hs.command);
 
-    let execArgs = [rmcArg];
+    // let execArgs = [rmcArg];
 
-    if (args) {
-       execArgs = execArgs.concat(args);
-    }
+    // if (args) {
+    //    execArgs = execArgs.concat(args);
+    // }
 
-    const exitCode = await fn(rmcPath, ["disp('hello world!');ver;license('inuse')"]);
+    const exitCode = await fn(rmcPath, [rmcArg]);
     // const exitCode = await fn(rmcPath, execArgs);
     if (exitCode !== 0) {
         return Promise.reject(Error(`Exited with non-zero code ${exitCode}`));
