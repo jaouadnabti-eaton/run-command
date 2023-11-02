@@ -62,7 +62,7 @@ export async function runCommand(hs: HelperScript, platform: string, architectur
        execArgs = execArgs.concat(args);
     }
 
-    const exitCode = await fn(rmcPath, ["license('inuse')"]);
+    const exitCode = await fn(rmcPath, ["disp('hello world!');ver;license('inuse')"]);
     // const exitCode = await fn(rmcPath, execArgs);
     if (exitCode !== 0) {
         return Promise.reject(Error(`Exited with non-zero code ${exitCode}`));
